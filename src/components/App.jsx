@@ -1,12 +1,8 @@
-import { Component } from 'react';
-import { Modal } from './Modal/Modal';
+import { useState } from 'react';
 
-export class App extends Component() {
-  render() {
-    return (
-      <div>
-        <Modal />
-      </div>
-    );
-  }
-}
+export const App = () => {
+  const [ferst, second] = useState(false);
+  console.log('ferst', ferst);
+  console.log('second', second);
+  return <div></div>;
+};
