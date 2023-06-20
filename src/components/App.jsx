@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import nanoid from 'nanoid';
+import { nanoid } from 'nanoid';
 import { Modal } from './Modal/Modal';
 import { FormaLogin } from './FormaLogin/FormaLogin';
+import { Counter } from './Counter/Counter';
 
 export const App = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -23,20 +24,21 @@ export const App = () => {
     console.lof('newUser', newUser);
   };
 
-  const handleSearch = searchText => {
-    setSearchText(searchText);
-  };
+  // const handleSearch = searchText => {
+  //   setSearchText(searchText);
+  // };
 
   return (
     <div>
-      <Header showModal={showModal} />
-      <Search handleSearch={handleSearch} />
-      <ContentInfo searchText={searchText} />
+      {/* <Header showModal={showModal} /> */}
+      {/* <Search handleSearch={handleSearch} /> */}
+      {/* <ContentInfo searchText={searchText} /> */}
       {isShowModal && (
         <Modal closeModal={closeModal}>
           <FormaLogin closeModal={closeModal} createUser={createUser} />
         </Modal>
       )}
+      <Counter />
     </div>
   );
 };
