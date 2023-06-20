@@ -19,6 +19,7 @@ export const App = () => {
       ...data,
       id: nanoid(),
     };
+    console.lof('newUser', newUser);
   };
 
   const handleSearch = searchText => {
@@ -32,7 +33,7 @@ export const App = () => {
       <ContentInfo searchText={searchText} />
       {isShowModal && (
         <Modal closeModal={closeModal}>
-          <FormLoghin closeModal={closeModal} createUser={createUser} />
+          <FormLogin closeModal={closeModal} createUser={createUser} />
         </Modal>
       )}
     </div>
