@@ -9,7 +9,20 @@ export const Counter = () => {
   };
 
   const handleClickMinus = () => {
+    if (total === 0) {
+      return;
+    }
     setTotal(total - 1);
   };
-  return <div></div>;
+  return (
+    <div>
+      <button type="button" onClick={handleClickPlus}>
+        Plus
+      </button>
+      <p>{total}</p>
+      <button type="button" onClick={handleClickMinus}>
+        Minus
+      </button>
+    </div>
+  );
 };
