@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import nanoid from 'nanoid';
+import { Modal } from './Modal/Modal';
 
 export const App = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -13,7 +14,7 @@ export const App = () => {
     isShowModal(false);
   };
 
-  const createUser = () => {
+  const createUser = data => {
     const newUser = {
       ...data,
       id: nanoid(),
@@ -24,5 +25,16 @@ export const App = () => {
     setSearchText(searchText);
   };
 
-  return <div></div>;
+  return (
+    <div>
+      <Header showModal={showModal} />
+      <Search handleSearch={handleSearch} />
+      <ContentInfo searchText={searchText} />
+      {isShowModal && (
+        <Modal closeModal={closeModal}>
+          <FormLoghin closeModal={closeModal} createUser={createUser} />
+        </Modal>
+      )}
+    </div>
+  );
 };
