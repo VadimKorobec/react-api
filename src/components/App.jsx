@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import nanoid from 'nanoid';
 import { Modal } from './Modal/Modal';
+import { FormaLogin } from './FormaLogin/FormaLogin';
 
 export const App = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -33,7 +34,7 @@ export const App = () => {
       <ContentInfo searchText={searchText} />
       {isShowModal && (
         <Modal closeModal={closeModal}>
-          <FormLogin closeModal={closeModal} createUser={createUser} />
+          <FormaLogin closeModal={closeModal} createUser={createUser} />
         </Modal>
       )}
     </div>
