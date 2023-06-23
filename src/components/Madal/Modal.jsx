@@ -6,7 +6,8 @@ export const Modal = ({ children }) => {
           display: 'block',
           backdropFilter: 'blur(5px)',
           width: '300px',
-          height: '300px',
+          height: '100px',
+          backgroundColor: 'gray',
         }}
       >
         <h5>Modal</h5>
