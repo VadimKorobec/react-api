@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal } from './Madal/Modal';
-import { Counter } from './Counter/Counter';
+// import { Counter } from './Counter/Counter';
 import { Header } from './Header/Header';
 import { TodoList } from './TodoList/TodoList';
 import { LoginForm } from './LoginForm/LoginForm';
@@ -22,12 +22,13 @@ export class App extends Component {
     return (
       <>
         <Header showModal={this.showModal} />
-        <Counter />
+        {/* <Counter /> */}
         {this.state.isShowModal && (
-          <Modal closeModal={this.closeModal}>some</Modal>
+          <Modal closeModal={this.closeModal}>
+            <LoginForm />
+          </Modal>
         )}
         <TodoList />
-        <LoginForm />
       </>
     );
   }
