@@ -4,7 +4,7 @@ import { Counter } from './Counter/Counter';
 
 export class App extends Component {
   state = {
-    isShowModal: false,
+    isShowModal: true,
   };
 
   showModal = () => {
