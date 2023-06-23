@@ -9,9 +9,15 @@ export class TodoList extends Component {
 
   handleCheckCompleted = id => {
     this.setState(prevState => ({
-      todoList: prevState.todoList.map(item => item.id === id)
-        ? { ...todo, completed: !todo.completed }
-        : todo,
+      todoList: prevState.todoList.map(todo =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      ),
+    }));
+  };
+
+  handleDelete = id => {
+    this.setState(prevState => ({
+      todoList: prevState.todoList.filter(todo => todo.id !== id),
     }));
   };
 
@@ -25,6 +31,7 @@ export class TodoList extends Component {
               key={todo.id}
               todo={todo}
               handleCheckCompleted={this.handleCheckCompleted}
+              handleDelete={this.handleDelete}
             />
           ))}
         </ul>
