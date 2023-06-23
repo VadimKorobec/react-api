@@ -1,4 +1,4 @@
-export const TodoItem = ({ todo, handleCheckCompleted }) => {
+export const TodoItem = ({ todo, handleCheckCompleted, handleDelete }) => {
   return (
     <>
       <li style={{ listStyle: 'none', display: 'flex', gap: '20px' }}>
@@ -11,7 +11,9 @@ export const TodoItem = ({ todo, handleCheckCompleted }) => {
           {todo.title}
         </div>
 
-        <button type="button">Delete Todo</button>
+        <button type="button" onClick={() => handleDelete(todo.id)}>
+          Delete Todo
+        </button>
       </li>
     </>
   );
