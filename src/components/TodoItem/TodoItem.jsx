@@ -1,14 +1,14 @@
-export const TodoItem = ({ item, handleCheckCompleted }) => {
+export const TodoItem = ({ todo, handleCheckCompleted }) => {
   return (
     <>
       <li style={{ listStyle: 'none', display: 'flex', gap: '20px' }}>
         <div>
           <input
             type="checkbox"
-            checked={item.completed}
-            onChange={() => handleCheckCompleted(item.id)}
+            checked={todo.completed}
+            onChange={() => handleCheckCompleted(todo.id)}
           />
-          {item.title}
+          {todo.title}
         </div>
 
         <button type="button">Delete Todo</button>
