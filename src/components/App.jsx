@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Modal } from './Madal/Modal';
 import { Counter } from './Counter/Counter';
 import { Header } from './Header/Header';
+import { TodoList } from './TodoList/TodoList';
 
 export class App extends Component {
   state = {
@@ -24,6 +25,7 @@ export class App extends Component {
         {this.state.isShowModal && (
           <Modal closeModal={this.closeModal}>some</Modal>
         )}
+        <TodoList />
       </>
     );
   }
