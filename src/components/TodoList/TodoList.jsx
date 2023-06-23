@@ -1,17 +1,17 @@
 import { Component } from 'react';
-import todos from '../../todo.json';
+import todo from '../../todo.json';
 import { TodoItem } from 'components/TodoItem/TodoItem';
 
 export class TodoList extends Component {
   state = {
-    todoList: todos,
+    todoList: todo,
   };
 
   handleCheckCompleted = id => {
     this.setState(prevState => ({
       todoList: prevState.todoList.map(item => item.id === id)
-        ? { ...todos, completed: !todos.completed }
-        : todos,
+        ? { ...todo, completed: !todo.completed }
+        : todo,
     }));
   };
 
@@ -20,10 +20,10 @@ export class TodoList extends Component {
       <>
         <h1>My Todo List</h1>
         <ul>
-          {this.state.todoList.map(item => (
+          {this.state.todoList.map(todo => (
             <TodoItem
-              key={item.id}
-              item={item}
+              key={todo.id}
+              todo={todo}
               handleCheckCompleted={this.handleCheckCompleted}
             />
           ))}
