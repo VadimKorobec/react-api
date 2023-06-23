@@ -1,4 +1,4 @@
-export const Modal = ({ children }) => {
+export const Modal = ({ children, closeModal }) => {
   return (
     <>
       <div
@@ -11,7 +11,9 @@ export const Modal = ({ children }) => {
         }}
       >
         <h5>Modal</h5>
-        <button type="button">Click me</button>
+        <button type="button" onClick={closeModal}>
+          Click me
+        </button>
         <div>{children}</div>
       </div>
     </>
