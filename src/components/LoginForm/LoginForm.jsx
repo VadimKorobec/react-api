@@ -15,6 +15,7 @@ export class LoginForm extends Component {
               className="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
+              onChange={e => console.log(e.target.value)}
             />
             <div id="emailHelp" className="form-text">
               We'll never share your email with anyone else.
