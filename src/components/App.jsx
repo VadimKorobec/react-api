@@ -4,6 +4,7 @@ import { Modal } from './Madal/Modal';
 import { Header } from './Header/Header';
 import { TodoList } from './TodoList/TodoList';
 import { LoginForm } from './LoginForm/LoginForm';
+import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
@@ -18,6 +19,14 @@ export class App extends Component {
     this.setState({ isShowModal: false });
   };
 
+  createUser = data => {
+    const newUser = {
+      ...data,
+      id: nanoid(),
+    };
+    console.log('newUser', newUser);
+  };
+
   render() {
     return (
       <>
@@ -25,7 +34,10 @@ export class App extends Component {
         {/* <Counter /> */}
         {this.state.isShowModal && (
           <Modal closeModal={this.closeModal}>
-            <LoginForm />
+            <LoginForm
+              createUser={this.createUser}
+              closeModal={this.closeModal}
+            />
           </Modal>
         )}
         <TodoList />
