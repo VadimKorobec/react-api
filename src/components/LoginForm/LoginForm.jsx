@@ -44,6 +44,7 @@ export class LoginForm extends Component {
 
     this.props.closeModal();
   };
+
   render() {
     const { email, password, isChecked, gender } = this.state;
     return (
