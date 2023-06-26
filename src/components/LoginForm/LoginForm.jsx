@@ -37,10 +37,10 @@ export class LoginForm extends Component {
   };
 
   reset = () => {
-    this.setState = {
+    this.setState({
       email: '',
       password: '',
-    };
+    });
 
     this.props.closeModal();
   };
