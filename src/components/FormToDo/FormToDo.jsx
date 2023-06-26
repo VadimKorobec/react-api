@@ -13,15 +13,14 @@ export class FormToDo extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
     this.props.addToDo(this.state.todo);
     this.reset();
   };
 
   reset = () => {
-    this.setState = {
+    this.setState({
       todo: '',
-    };
+    });
   };
 
   render() {
