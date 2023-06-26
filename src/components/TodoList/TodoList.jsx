@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import todo from '../../todo.json';
+// import todo from '../../todo.json';
 import { TodoItem } from 'components/TodoItem/TodoItem';
 import { FormToDo } from 'components/FormToDo/FormToDo';
 import { nanoid } from 'nanoid';
@@ -76,7 +76,7 @@ export class TodoList extends Component {
           </div>
         )}
         <FormToDo addToDo={this.addToDo} />
-        {this.state.todostLi && (
+        {this.state.todoList && (
           <ul>
             {this.state.todoList.map(todo => (
               <TodoItem
