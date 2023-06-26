@@ -5,6 +5,7 @@ import { Header } from './Header/Header';
 import { TodoList } from './TodoList/TodoList';
 import { LoginForm } from './LoginForm/LoginForm';
 import { nanoid } from 'nanoid';
+import { Search } from './Search/Search';
 
 export class App extends Component {
   state = {
@@ -31,6 +32,7 @@ export class App extends Component {
     return (
       <>
         <Header showModal={this.showModal} />
+        <Search />
         {/* <Counter /> */}
         {this.state.isShowModal && (
           <Modal closeModal={this.closeModal}>
