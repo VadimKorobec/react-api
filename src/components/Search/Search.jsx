@@ -5,9 +5,13 @@ export class Search extends Component {
     value: '',
   };
 
-  handleChange = ({ target: { value } }) => {
-    this.setState({ value });
+  handleChange = e => {
+    this.setState({ value: e.target.value });
   };
+
+  // handleChange = ({ target: { value } }) => {
+  //   this.setState({ value });
+  // };
 
   handleSubmit = e => {
     e.preventDefault();
