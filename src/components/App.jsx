@@ -40,7 +40,7 @@ export class App extends Component {
     return (
       <>
         <Header showModal={this.showModal} />
-        <Search />
+        <Search handleSearch={this.handleSearch} />
         <ContentInfo searchText={searchText} />
         {/* <Counter /> */}
         {this.state.isShowModal && (
