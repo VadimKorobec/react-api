@@ -32,7 +32,7 @@ export class ContentInfo extends Component {
   }
 
   render() {
-    // const { news, isLoading, error } = this.state;
+    const { news, error } = this.state;
     if (this.state.status === 'pending') {
       return (
         <div className="spinner-border" role="status">
@@ -42,7 +42,7 @@ export class ContentInfo extends Component {
     } else if (this.state.status === 'resolved') {
       return (
         <ul>
-          {this.state.news.map(item => (
+          {news.map(item => (
             <li key={item.url}>
               <p>{item.title}</p>
               <p>{item.author}</p>
@@ -52,7 +52,7 @@ export class ContentInfo extends Component {
         </ul>
       );
     } else if (this.state.status === 'rejected') {
-      return <ErrorCard>{this.state.error}</ErrorCard>;
+      return <ErrorCard>{error}</ErrorCard>;
     }
     // return (
     //   <>
