@@ -2,17 +2,17 @@ import { useEffect } from 'react';
 
 export const Modal = ({ children, closeModal }) => {
   useEffect(() => {
+    const handlePressESC = e => {
+      if (e.code === 'Escape') {
+        closeModal();
+      }
+    };
     window.addEventListener('keydown', handlePressESC);
     return () => {
       window.removeEventListener('keydown', handlePressESC);
     };
-  }, []);
+  }, [closeModal]);
 
-  const handlePressESC = e => {
-    if (e.code === 'Escape') {
-      closeModal();
-    }
-  };
   return (
     <>
       <div className="modal-dialog" style={{ width: '400px' }}>
