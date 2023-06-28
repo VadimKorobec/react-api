@@ -5,7 +5,7 @@ import { getNews } from 'services/getNews';
 export class ContentInfo extends Component {
   state = {
     news: null,
-    isLoading: false,
+    // isLoading: false,
     error: '',
     status: 'idle',
   };
@@ -24,27 +24,25 @@ export class ContentInfo extends Component {
         })
         .catch(error => {
           this.setState({ error, status: 'rejected' });
-        })
-        .finally(() => {
-          this.setState({ isLoading: false });
         });
+      // .finally(() => {
+      //   this.setState({ isLoading: false });
+      // });
     }
   }
 
   render() {
-    const { news, isLoading, error } = this.state;
+    // const { news, isLoading, error } = this.state;
     if (this.state.status === 'pending') {
       return (
         <div className="spinner-border" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
       );
-    } else if (this.state.status === 'rejected') {
-      return <ErrorCard>{error}</ErrorCard>;
     } else if (this.state.status === 'resolved') {
       return (
         <ul>
-          {news.map(item => (
+          {this.state.news.map(item => (
             <li key={item.url}>
               <p>{item.title}</p>
               <p>{item.author}</p>
@@ -53,26 +51,28 @@ export class ContentInfo extends Component {
           ))}
         </ul>
       );
+    } else if (this.state.status === 'rejected') {
+      return <ErrorCard>{this.state.error}</ErrorCard>;
     }
-    return (
-      <>
-        {error && <ErrorCard>{error}</ErrorCard>}
-        {isLoading && (
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        )}
-        <ul>
-          {news &&
-            news.map(item => (
-              <li key={item.url}>
-                <p>{item.title}</p>
-                <p>{item.author}</p>
-                <p>{item.description}</p>
-              </li>
-            ))}
-        </ul>
-      </>
-    );
+    // return (
+    //   <>
+    //     {/* {error && <ErrorCard>{error}</ErrorCard>} */}
+    //     {/* {isLoading && (
+    //       <div className="spinner-border" role="status">
+    //         <span className="visually-hidden">Loading...</span>
+    //       </div>
+    //     )} */}
+    //     {/* <ul>
+    //       {news &&
+    //         news.map(item => (
+    //           <li key={item.url}>
+    //             <p>{item.title}</p>
+    //             <p>{item.author}</p>
+    //             <p>{item.description}</p>
+    //           </li>
+    //         ))}
+    //     </ul> */}
+    //   </>
+    // );
   }
 }
