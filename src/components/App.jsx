@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { Modal } from './Madal/Modal';
 // import { Counter } from './Counter/Counter';
 import { Header } from './Header/Header';
@@ -13,11 +13,11 @@ export const App = () => {
   const [searchText, setSearchText] = useState('');
 
   const showModal = () => {
-    setIsShowModal: true;
+    setIsShowModal(true);
   };
 
   const closeModal = () => {
-    setIsShowModal: false;
+    setIsShowModal(false);
   };
 
   const createUser = data => {
@@ -29,7 +29,7 @@ export const App = () => {
   };
 
   const handleSearch = searchText => {
-    this.setState({ searchText });
+    setSearchText(searchText);
   };
 
   return (
