@@ -7,6 +7,7 @@ import { LoginForm } from './LoginForm/LoginForm';
 import { nanoid } from 'nanoid';
 import { Search } from './Search/Search';
 import { ContentInfo } from './ContentInfo/ContentInfo';
+import { Toaster } from 'react-hot-toast';
 
 export const App = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -44,6 +45,7 @@ export const App = () => {
         </Modal>
       )}
       <TodoList />
+      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 };
