@@ -6,8 +6,8 @@ import { toast } from 'react-hot-toast';
 
 export const TodoList = () => {
   const [todoList, setTodoList] = useState('');
-  const [isDelete, setIsDelete] = useState(false);
-  const [isCreate, setIsCreate] = useState(false);
+  // const [isDelete, setIsDelete] = useState(false);
+  // const [isCreate, setIsCreate] = useState(false);
 
   useEffect(() => {
     const localTodo = localStorage.getItem('todo');
@@ -30,36 +30,37 @@ export const TodoList = () => {
     setTodoList(prevState => {
       return prevState.filter(todo => todo.id !== id);
     });
-    setIsDelete(true);
-    setTimeout(() => {
-      setIsDelete(false);
-    }, 1500);
+    toast.error('Delete succssesfuly');
+    // setIsDelete(true);
+    // setTimeout(() => {
+    //   setIsDelete(false);
+    // }, 1500);
   };
 
   const addToDo = value => {
     setTodoList(prevState => {
       return [...prevState, { id: nanoid(), title: value, completed: false }];
     });
-    toast.error('Deleate todo');
-    setIsCreate(true);
-    setTimeout(() => {
-      setIsCreate(false);
-    }, 1500);
+    toast.success('Create successfully');
+    // setIsCreate(true);
+    // setTimeout(() => {
+    //   setIsCreate(false);
+    // }, 1500);
   };
 
   return (
     <>
       <h1>My Todo List</h1>
-      {isDelete && (
+      {/* {isDelete && (
         <div className="alert alert-danger" role="alert">
           ToDo delete successfully!
         </div>
-      )}
-      {isCreate && (
+      )} */}
+      {/* !      {isCreate && (
         <div className="alert alert-success" role="alert">
-          Create ToDo successfully!
+          Create ToDo successfully
         </div>
-      )}
+      )} */}
       <FormToDo addToDo={addToDo} />
       {todoList && (
         <ul>
