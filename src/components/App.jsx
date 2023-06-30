@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from './Madal/Modal';
-// import { Counter } from './Counter/Counter';
+import { Counter } from './Counter/Counter';
 import { Header } from './Header/Header';
 import { TodoList } from './TodoList/TodoList';
 import { LoginForm } from './LoginForm/LoginForm';
@@ -38,7 +38,7 @@ export const App = () => {
       <Header showModal={showModal} />
       <Search handleSearch={handleSearch} />
       <ContentInfo searchText={searchText} />
-      {/* <Counter /> */}
+      <Counter />
       {isShowModal && (
         <Modal closeModal={closeModal}>
           <LoginForm createUser={createUser} closeModal={closeModal} />
