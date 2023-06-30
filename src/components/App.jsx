@@ -8,6 +8,7 @@ import { nanoid } from 'nanoid';
 import { Search } from './Search/Search';
 import { ContentInfo } from './ContentInfo/ContentInfo';
 import { Toaster } from 'react-hot-toast';
+import { TestUseMemo } from './TestUseMemo/TestUseMemo';
 
 export const App = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -45,6 +46,7 @@ export const App = () => {
         </Modal>
       )}
       <TodoList />
+      <TestUseMemo />
       <Toaster position="top-right" reverseOrder={false} />
     </>
   );
