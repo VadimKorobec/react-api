@@ -1,17 +1,25 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
+
+const reducer = (prevState, action) => {
+  if (action.type === 'increment') return prevState + action.payload;
+  else return prevState - action.payload;
+};
 
 export const Counter = () => {
-  const [total, setTotal] = useState(0);
+  // const [total, setTotal] = useState(0);
+  const [total, setTotal] = useReducer(reducer, 0);
 
   const handleClickIncrement = () => {
-    setTotal(total + 1);
+    setTotal({ type: 'increment', payload: 1 });
+    // setTotal(total + 1);
   };
 
   const handleClickDecrement = () => {
     if (total === 0) {
       return;
     }
-    setTotal(total - 1);
+    setTotal({ type: 'decrement', payload: 1 });
+    // setTotal(total - 1);
   };
 
   return (
