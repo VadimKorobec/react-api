@@ -1,8 +1,7 @@
-import { useContext } from 'react';
-import { Context } from './App';
+import { useCustomContext } from '../testContext/Context/Context';
 
 export const Alert = () => {
-  const context = useContext(Context);
+  const context = useCustomContext();
 
   return (
     context.toggleValue && <div className="alert alert-danger">Message</div>
