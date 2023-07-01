@@ -1,19 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Alert } from './Alert';
 import { Main } from './Main';
-
-export const Context = React.createContext();
+import { Context } from './Context/Context';
 
 export const App = () => {
-  const [toggleAlert, setToggleAlert] = useState(false);
   return (
-    <Context.Provider
-      value={{ toggleValue: toggleAlert, toggle: setToggleAlert }}
-    >
+    <Context>
       <div className="container pt-2">
         <Alert />
         <Main />
       </div>
-    </Context.Provider>
+    </Context>
   );
 };
