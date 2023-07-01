@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 const complexComputer = number => {
   for (let i = 0; i < 1000000000; i += 1) {
@@ -10,11 +10,20 @@ export const TestUseMemo = () => {
   const [total, setTotal] = useState(10);
   const [colored, setColored] = useState(false);
 
-  const styled = { color: colored ? 'red' : 'white' };
+  const styled = useMemo(() => {
+    return { color: colored ? 'red' : 'white' };
+  }, [colored]);
 
   // const computed = complexComputer(total);
 
-  const computed = useMemo(() => {}, []);
+  const computed = useMemo(() => {
+    console.log('useMemo');
+    return complexComputer(total);
+  }, [total]);
+
+  useEffect(() => {
+    console.log('change styled');
+  }, [styled]);
 
   return (
     <div className="card bg-dark text-white mx-auto w-100 mt-2">
