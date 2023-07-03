@@ -6,8 +6,6 @@ import { toast } from 'react-hot-toast';
 
 export const TodoList = () => {
   const [todoList, setTodoList] = useState('');
-  // const [isDelete, setIsDelete] = useState(false);
-  // const [isCreate, setIsCreate] = useState(false);
 
   useEffect(() => {
     const localTodo = localStorage.getItem('todo');
@@ -31,10 +29,6 @@ export const TodoList = () => {
       return prevState.filter(todo => todo.id !== id);
     });
     toast.error('Delete succssesfuly');
-    // setIsDelete(true);
-    // setTimeout(() => {
-    //   setIsDelete(false);
-    // }, 1500);
   };
 
   const addToDo = value => {
@@ -42,25 +36,11 @@ export const TodoList = () => {
       return [...prevState, { id: nanoid(), title: value, completed: false }];
     });
     toast.success('Create successfully');
-    // setIsCreate(true);
-    // setTimeout(() => {
-    //   setIsCreate(false);
-    // }, 1500);
   };
 
   return (
     <>
       <h1>My Todo List</h1>
-      {/* {isDelete && (
-        <div className="alert alert-danger" role="alert">
-          ToDo delete successfully!
-        </div>
-      )} */}
-      {/* !      {isCreate && (
-        <div className="alert alert-success" role="alert">
-          Create ToDo successfully
-        </div>
-      )} */}
       <FormToDo addToDo={addToDo} />
       {todoList && (
         <ul>
