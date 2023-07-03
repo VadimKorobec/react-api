@@ -1,3 +1,7 @@
 export const NewsPage = () => {
-  return <></>;
+  return (
+    <>
+      <h1>News Page</h1>
+    </>
+  );
 };
