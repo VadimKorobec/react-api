@@ -1,3 +1,7 @@
 export const TodoPage = () => {
-  return;
+  return (
+    <>
+      <h1>Todo Page</h1>
+    </>
+  );
 };
