@@ -2,7 +2,7 @@ import { ContentInfo } from 'components/ContentInfo/ContentInfo';
 import { Search } from 'components/Search/Search';
 import { useState } from 'react';
 
-export const NewsPage = () => {
+const NewsPage = () => {
   const [searchText, setSearchText] = useState('');
 
   const handleSearch = searchText => {
@@ -17,3 +17,5 @@ export const NewsPage = () => {
     </>
   );
 };
+
+export default NewsPage;
