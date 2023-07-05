@@ -3,9 +3,14 @@ import { TodoItem } from 'components/TodoItem/TodoItem';
 import { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-hot-toast';
+import { FormFilterTodo } from 'components/FormToDo/FormFilterTodo';
+import { useSearchParams } from 'react-router-dom';
 
 export const TodoList = () => {
   const [todoList, setTodoList] = useState('');
+  const [filterTodoList, setFilterTodoList] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams('');
+  console.log('searchParams.get', searchParams.get('filter'));
 
   useEffect(() => {
     const localTodo = localStorage.getItem('todo');
@@ -15,6 +20,12 @@ export const TodoList = () => {
   useEffect(() => {
     todoList && localStorage.setItem('todo', JSON.stringify(todoList));
   }, [todoList]);
+
+  useEffect(() => {
+    todoList.filter(todo =>
+      todo.titel.toLowerCase().includes(searchParams.get('filter'))
+    );
+  }, [searchParams, todoList]);
 
   const handleCheckCompleted = id => {
     setTodoList(prevState => {
@@ -41,6 +52,7 @@ export const TodoList = () => {
   return (
     <>
       <h1>My Todo List</h1>
+      <FormFilterTodo setSearchParams={setSearchParams} />
       <FormToDo addToDo={addToDo} />
       {todoList && (
         <ul>
