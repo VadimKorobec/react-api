@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 export const TodoItem = ({ todo, handleCheckCompleted, handleDelete }) => {
   const location = useLocation();
+  console.log('location', location);
   return (
     <>
       <li className="list-group-item">
@@ -16,7 +17,7 @@ export const TodoItem = ({ todo, handleCheckCompleted, handleDelete }) => {
               />
             )}
             {handleCheckCompleted ? (
-              <Link to={todo.id} state={100}>
+              <Link to={todo.id} state={location}>
                 {todo.title}
               </Link>
             ) : (
