@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { TodoItem } from './TodoItem';
 
 export const TodoDetails = () => {
   const [todoList, setTodoList] = useState(null);
   const params = useParams();
+
+  const location = useLocation();
+  console.log('location', location);
 
   useEffect(() => {
     const localTodo = localStorage.getItem('todo');
@@ -13,6 +16,9 @@ export const TodoDetails = () => {
 
   return (
     <>
+      <Link to={'/todo'} className="btn btn-secondary m-2">
+        Back
+      </Link>
       {todoList?.map(
         todo => todo.id === params.id && <TodoItem key={todo.id} todo={todo} />
       )}
