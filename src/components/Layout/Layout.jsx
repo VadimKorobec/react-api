@@ -29,7 +29,7 @@ const Layout = () => {
     <>
       <div className="container">
         <Header showModal={showModal} />
-        <Suspense>
+        <Suspense fallback={<h2>Loading ...</h2>}>
           <Outlet />
         </Suspense>
         {isShowModal && (
