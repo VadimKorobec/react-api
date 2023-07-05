@@ -1,6 +1,6 @@
 import { TodoList } from 'components/TodoList/TodoList';
 
-export const TodoPage = () => {
+const TodoPage = () => {
   return (
     <>
       <h1>Todo Page</h1>
@@ -8,3 +8,5 @@ export const TodoPage = () => {
     </>
   );
 };
+
+export default TodoPage;
