@@ -8,7 +8,7 @@ import { Context } from 'testContext/Context/Context';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/react-api">
       <Context>
         <App />
       </Context>
