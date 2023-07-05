@@ -8,9 +8,10 @@ import { useSearchParams } from 'react-router-dom';
 
 export const TodoList = () => {
   const [todoList, setTodoList] = useState('');
-  const [filterTodoList, setFilterTodoList] = useState(null);
+  const [filterTodoList, setFilterTodoList] = useState(todoList);
   const [searchParams, setSearchParams] = useSearchParams('');
-  console.log('searchParams.get', searchParams.get('filter'));
+
+  const filterText = searchParams.get('filter') ?? '';
 
   useEffect(() => {
     const localTodo = localStorage.getItem('todo');
@@ -22,10 +23,13 @@ export const TodoList = () => {
   }, [todoList]);
 
   useEffect(() => {
-    todoList.filter(todo =>
-      todo.titel.toLowerCase().includes(searchParams.get('filter'))
-    );
-  }, [searchParams, todoList]);
+    todoList &&
+      setFilterTodoList(
+        todoList?.filter(todo =>
+          todo.title.toLowerCase().includes(filterText.trim().toLowerCase())
+        )
+      );
+  }, [filterText, todoList]);
 
   const handleCheckCompleted = id => {
     setTodoList(prevState => {
@@ -52,11 +56,14 @@ export const TodoList = () => {
   return (
     <>
       <h1>My Todo List</h1>
-      <FormFilterTodo setSearchParams={setSearchParams} />
+      <FormFilterTodo
+        setSearchParams={setSearchParams}
+        filterText={filterText}
+      />
       <FormToDo addToDo={addToDo} />
-      {todoList && (
+      {filterTodoList && (
         <ul>
-          {todoList.map(todo => (
+          {filterTodoList.map(todo => (
             <TodoItem
               key={todo.id}
               todo={todo}
