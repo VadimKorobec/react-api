@@ -4,6 +4,7 @@ import { TodoPage } from './pages/TodoPage';
 import { Layout } from './Layout/Layout';
 import { HomePage } from './pages/HomePage';
 import { TodoDetails } from './TodoItem/TodoDetails';
+import { lazy } from 'react';
 
 export const App = () => {
   return (
