@@ -1,4 +1,4 @@
-export const FormFilterTodo = ({ setSearchParams }) => {
+export const FormFilterTodo = ({ setSearchParams, filterText }) => {
   const handleChange = e => {
     setSearchParams({ filter: e.target.value });
   };
@@ -15,6 +15,7 @@ export const FormFilterTodo = ({ setSearchParams }) => {
             className="form-control"
             id="exampleInput"
             onChange={handleChange}
+            value={filterText}
           />
         </div>
       </form>
