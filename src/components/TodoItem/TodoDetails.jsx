@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { TodoItem } from './TodoItem';
 
-export const TodoDetails = () => {
+const TodoDetails = () => {
   const [todoList, setTodoList] = useState(null);
   const params = useParams();
 
@@ -15,13 +15,15 @@ export const TodoDetails = () => {
   }, []);
 
   return (
-    <>
+    <Suspense>
       <Link to={location.state} className="btn btn-secondary m-2">
         Back
       </Link>
       {todoList?.map(
         todo => todo.id === params.id && <TodoItem key={todo.id} todo={todo} />
       )}
-    </>
+    </Suspense>
   );
 };
+
+export default TodoDetails;
