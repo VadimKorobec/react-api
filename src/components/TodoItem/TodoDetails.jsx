@@ -16,7 +16,7 @@ export const TodoDetails = () => {
 
   return (
     <>
-      <Link to={'/todo'} className="btn btn-secondary m-2">
+      <Link to={location.state} className="btn btn-secondary m-2">
         Back
       </Link>
       {todoList?.map(
