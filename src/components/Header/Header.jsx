@@ -1,6 +1,11 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export const Header = ({ showModal }) => {
+  const navigate = useNavigate();
+  console.log('navigate', navigate);
+  const handleLogin = () => {
+    navigate('/login');
+  };
   return (
     <>
       <nav className="navbar bg-dark mb-3 navbar-expand-lg">
@@ -26,10 +31,18 @@ export const Header = ({ showModal }) => {
           <button
             className="btn btn-outline-seccess"
             type="button"
-            style={{ backgroundColor: 'pink' }}
+            style={{ backgroundColor: 'pink', marginRight: '10px' }}
             onClick={showModal}
           >
             Open Modal
+          </button>
+          <button
+            className="btn btn-outline-seccess"
+            type="button"
+            style={{ backgroundColor: 'pink' }}
+            onClick={handleLogin}
+          >
+            Login
           </button>
         </div>
       </nav>
