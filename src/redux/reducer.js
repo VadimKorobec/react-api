@@ -1,19 +1,20 @@
 import { combineReducers } from 'redux';
 import { initialState } from './initialState';
+import { DECREMENT, INCREMENT, SETSTEP } from './types';
 
-const counterReducer = (state, action) => {
+const counterReducer = (state = initialState.counter, action) => {
   switch (action.type) {
-    case 'increment':
+    case INCREMENT:
       return {
         ...state,
         total: state.total + action.payload,
       };
-    case 'decrement':
+    case DECREMENT:
       return {
         ...state,
         total: state.total - action.payload,
       };
-    case 'setStep':
+    case SETSTEP:
       return {
         ...state,
         step: action.payload,
@@ -23,7 +24,7 @@ const counterReducer = (state, action) => {
   }
 };
 
-const todoReducer = (state, action) => {
+const todoReducer = (state = initialState.todo, action) => {
   switch (action.type) {
     case 'createTodo':
       return {
