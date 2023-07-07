@@ -1,6 +1,7 @@
 // import { useReducer } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { increment, decrement } from '../../redux/actions';
 
 // const reducer = (prevState, action) => {
 //   if (action.type === 'increment') return prevState + action.payload;
@@ -10,14 +11,14 @@ import { useDispatch, useSelector } from 'react-redux';
 export const Counter = () => {
   // const [total, setTotal] = useState(0);
   // const [total, setTotal] = useReducer(reducer, 0);
-  const { total, step } = useSelector(state => state);
+  const { total, step } = useSelector(state => state.counter);
   // const { step } = useSelector(state => state);
   console.log('step', step);
 
   const dispatch = useDispatch();
 
   const handleClickIncrement = () => {
-    dispatch({ type: 'increment', payload: step });
+    dispatch(increment(step));
     // dispatch({ type: 'increment', payload: 1 });
     // setTotal({ type: 'increment', payload: 1 });
     // setTotal(total + 1);
@@ -27,7 +28,7 @@ export const Counter = () => {
     if (total === 0) {
       return;
     }
-    dispatch({ type: 'decrement', payload: step });
+    dispatch(decrement(step));
     // dispatch({ type: 'decrement', payload: 1 });
     // setTotal({ type: 'decrement', payload: 1 });
     // setTotal(total - 1);
