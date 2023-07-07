@@ -1,19 +1,7 @@
 import { combineReducers } from 'redux';
-import { initialState } from './initialState';
-import { CREATETODO, DECREMENT, INCREMENT, SETSTEP } from './types';
 
-const todoReducer = (state = initialState.todo, action) => {
-  switch (action.type) {
-    case CREATETODO:
-      return {
-        ...state,
-        todo: [...state.todo, { ...action.payload }],
-      };
-
-    default:
-      return state;
-  }
-};
+import { counterReducer } from './counter/counterReducer';
+import { todoReducer } from './todo/todoReducer';
 
 export const reducer = combineReducers({
   counter: counterReducer,
