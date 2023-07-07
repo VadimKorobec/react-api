@@ -1,1 +1,1 @@
-export const counterInitialState = { todo: [], filteredTodo: [] };
+export const counterInitialState = { total: 0, step: 1 };
