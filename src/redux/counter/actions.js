@@ -1,4 +1,4 @@
-import { DECREMENT, INCREMENT, SETSTEP } from '../types';
+import { DECREMENT, INCREMENT, SETSTEP } from './types';
 
 export const increment = step => ({ type: INCREMENT, payload: step });
 
