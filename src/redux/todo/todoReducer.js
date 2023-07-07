@@ -1,7 +1,7 @@
 import { todoInitialState } from './initialState';
 import { CREATETODO } from './types';
 
-export const todoReducer = (state = todoInitialState.todo, action) => {
+export const todoReducer = (state = todoInitialState, action) => {
   switch (action.type) {
     case CREATETODO:
       return {
