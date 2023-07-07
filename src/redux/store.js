@@ -12,6 +12,9 @@ const reducer = (state, action) => {
 };
 
 export const store = createStore(reducer, { total: 0 });
+
 console.log('store', store);
+
 store.dispatch({ type: 'increment', payload: 1 });
+
 console.log(store.getState());
