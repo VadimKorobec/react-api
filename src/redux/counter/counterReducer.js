@@ -1,6 +1,8 @@
+import { counterInitialState } from './initialState';
+
 const { INCREMENT, DECREMENT, SETSTEP } = require('./types');
 
-export const counterReducer = (state = coun.counter, action) => {
+export const counterReducer = (state = counterInitialState.counter, action) => {
   switch (action.type) {
     case INCREMENT:
       return {
