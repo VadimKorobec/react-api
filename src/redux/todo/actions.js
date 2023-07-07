@@ -1,3 +1,3 @@
-import { CREATETODO } from 'redux/types';
+import { CREATETODO } from './types';
 
 export const createTodo = todo => ({ type: CREATETODO, payload: todo });
