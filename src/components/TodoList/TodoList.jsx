@@ -5,18 +5,23 @@ import { nanoid } from 'nanoid';
 import { toast } from 'react-hot-toast';
 import { FormFilterTodo } from 'components/FormToDo/FormFilterTodo';
 import { useSearchParams } from 'react-router-dom';
+import { createTodo } from 'redux/todo/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const TodoList = () => {
-  const [todoList, setTodoList] = useState('');
+  // const [todoList, setTodoList] = useState('');
+  const { todo: todoList } = useSelector(state => state.todo);
   const [filterTodoList, setFilterTodoList] = useState(todoList);
   const [searchParams, setSearchParams] = useSearchParams('');
 
   const filterText = searchParams.get('filter') ?? '';
 
-  useEffect(() => {
-    const localTodo = localStorage.getItem('todo');
-    if (localTodo) setTodoList(JSON.parse(localTodo));
-  }, []);
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   const localTodo = localStorage.getItem('todo');
+  //   if (localTodo) setTodoList(JSON.parse(localTodo));
+  // }, []);
 
   useEffect(() => {
     todoList && localStorage.setItem('todo', JSON.stringify(todoList));
@@ -31,25 +36,26 @@ export const TodoList = () => {
       );
   }, [filterText, todoList]);
 
-  const handleCheckCompleted = id => {
-    setTodoList(prevState => {
-      return prevState.map(todo =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      );
-    });
-  };
+  // const handleCheckCompleted = id => {
+  //   setTodoList(prevState => {
+  //     return prevState.map(todo =>
+  //       todo.id === id ? { ...todo, completed: !todo.completed } : todo
+  //     );
+  //   });
+  // };
 
-  const handleDelete = id => {
-    setTodoList(prevState => {
-      return prevState.filter(todo => todo.id !== id);
-    });
-    toast.error('Delete succssesfuly');
-  };
+  // const handleDelete = id => {
+  //   setTodoList(prevState => {
+  //     return prevState.filter(todo => todo.id !== id);
+  //   });
+  //   toast.error('Delete succssesfuly');
+  // };
 
   const addToDo = value => {
-    setTodoList(prevState => {
-      return [...prevState, { id: nanoid(), title: value, completed: false }];
-    });
+    // setTodoList(prevState => {
+    //   return [...prevState, { id: nanoid(), title: value, completed: false }];
+    // });
+    dispatch(createTodo(value));
     toast.success('Create successfully');
   };
 
@@ -67,8 +73,8 @@ export const TodoList = () => {
             <TodoItem
               key={todo.id}
               todo={todo}
-              handleCheckCompleted={handleCheckCompleted}
-              handleDelete={handleDelete}
+              // handleCheckCompleted={handleCheckCompleted}
+              // handleDelete={handleDelete}
             />
           ))}
         </ul>
