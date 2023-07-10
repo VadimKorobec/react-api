@@ -1,7 +1,10 @@
 // import { useReducer } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { decrement, increment } from 'redux/counter/actions';
+// import { decrement,increment } from 'redux/counter/actions';
+
+import { increment } from '../../redux/counter/counterSlice';
+import { decrement } from '../../redux/counter/counterSlice';
 
 // const reducer = (prevState, action) => {
 //   if (action.type === 'increment') return prevState + action.payload;
@@ -13,7 +16,6 @@ export const Counter = () => {
   // const [total, setTotal] = useReducer(reducer, 0);
   const { total, step } = useSelector(state => state.counter);
   // const { step } = useSelector(state => state);
-  console.log('step', step);
 
   const dispatch = useDispatch();
 
