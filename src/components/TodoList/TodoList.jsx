@@ -1,7 +1,7 @@
 import { FormToDo } from 'components/FormToDo/FormToDo';
 import { TodoItem } from 'components/TodoItem/TodoItem';
 import { useEffect, useState } from 'react';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { toast } from 'react-hot-toast';
 import { FormFilterTodo } from 'components/FormToDo/FormFilterTodo';
 import { useSearchParams } from 'react-router-dom';
@@ -23,9 +23,9 @@ export const TodoList = () => {
   //   if (localTodo) setTodoList(JSON.parse(localTodo));
   // }, []);
 
-  useEffect(() => {
-    todoList && localStorage.setItem('todo', JSON.stringify(todoList));
-  }, [todoList]);
+  // useEffect(() => {
+  //   todoList && localStorage.setItem('todo', JSON.stringify(todoList));
+  // }, [todoList]);
 
   useEffect(() => {
     todoList &&
