@@ -9,7 +9,9 @@ export const todoReducer = createReducer(todoInitialState, {
   //   ...state,
   //   todo: [...state.todo, { ...action.payload }],
   // }),
-  [createTodo]: (state, action) => state.todo.push(action.payload),
+  [createTodo]: (state, action) => {
+    state.todo.push(action.payload);
+  },
 });
 
 // export const todoReducer = (state = todoInitialState, action) => {
