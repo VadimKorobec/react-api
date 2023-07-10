@@ -36,20 +36,20 @@ export const TodoList = () => {
       );
   }, [filterText, todoList]);
 
-  // const handleCheckCompleted = id => {
-  //   setTodoList(prevState => {
-  //     return prevState.map(todo =>
-  //       todo.id === id ? { ...todo, completed: !todo.completed } : todo
-  //     );
-  //   });
-  // };
+  const handleCheckCompleted = id => {
+    // setTodoList(prevState => {
+    //   return prevState.map(todo =>
+    //     todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    //   );
+    // });
+  };
 
-  // const handleDelete = id => {
-  //   setTodoList(prevState => {
-  //     return prevState.filter(todo => todo.id !== id);
-  //   });
-  //   toast.error('Delete succssesfuly');
-  // };
+  const handleDelete = id => {
+    // setTodoList(prevState => {
+    //   return prevState.filter(todo => todo.id !== id);
+    // });
+    // toast.error('Delete succssesfuly');
+  };
 
   const addToDo = value => {
     // setTodoList(prevState => {
@@ -73,8 +73,8 @@ export const TodoList = () => {
             <TodoItem
               key={todo.id}
               todo={todo}
-              // handleCheckCompleted={handleCheckCompleted}
-              // handleDelete={handleDelete}
+              handleCheckCompleted={handleCheckCompleted}
+              handleDelete={handleDelete}
             />
           ))}
         </ul>
