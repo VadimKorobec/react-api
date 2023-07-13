@@ -1,9 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { getNewsThunk } from 'redux/news/newsReducer';
 
 export const Header = ({ showModal }) => {
   const navigate = useNavigate();
-  console.log('navigate', navigate);
+
   const handleLogin = () => {
     navigate('/login');
   };
@@ -53,7 +54,7 @@ export const Header = ({ showModal }) => {
             type="button"
             style={{ backgroundColor: 'pink' }}
             onClick={() => {
-              dispatch(() => ({ type: 'thunk', payload: 100 }));
+              dispatch(getNewsThunk());
             }}
           >
             thunk
