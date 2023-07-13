@@ -15,7 +15,7 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
   key: 'todos',
   storage,
-  blacklist: ['counter'],
+  whitelist: ['todo'],
 };
 
 // const customMidle = state => {
