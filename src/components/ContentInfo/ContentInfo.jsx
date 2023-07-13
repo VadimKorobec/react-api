@@ -1,7 +1,10 @@
 import { ErrorCard } from 'components/ErrorCard/ErrorCard';
-import { useEffect, useState } from 'react';
-import { getNews } from 'services/getNews';
-import { useCustomContext } from 'testContext/Context/Context';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getNewsSearchThunk, getNewsThunk } from 'redux/news/thunk';
+// import { useEffect, useState } from 'react';
+// import { getNews } from 'services/getNews';
+// import { useCustomContext } from 'testContext/Context/Context';
 
 const STATUS = {
   IDLE: 'idle',
@@ -11,32 +14,44 @@ const STATUS = {
 };
 
 export const ContentInfo = ({ searchText }) => {
-  const { news, setNews } = useCustomContext();
-  const [error, setError] = useState('');
-  const [status, setStatus] = useState(STATUS.IDLE);
+  const { news, status, error } = useSelector(state => state.news);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    news && setStatus(STATUS.RESOLVED);
-  }, [news]);
+    dispatch(getNewsThunk());
+  }, [dispatch]);
 
   useEffect(() => {
     if (!searchText) return;
-    setStatus(STATUS.PENDING);
-    getNews(searchText)
-      .then(response => response.json())
-      .then(data => {
-        if (data.status === 'ok') {
-          setNews(data.articles);
-          setStatus(STATUS.RESOLVED);
-        } else {
-          return Promise.reject(data.message);
-        }
-      })
-      .catch(error => {
-        setError(error);
-        setStatus(STATUS.REJECTED);
-      });
-  }, [searchText, setNews]);
+    dispatch(getNewsSearchThunk(searchText));
+  }, [dispatch, searchText]);
+
+  // const { news, setNews } = useCustomContext();
+  // const [error, setError] = useState('');
+  // const [status, setStatus] = useState(STATUS.IDLE);
+
+  // useEffect(() => {
+  //   news && setStatus(STATUS.RESOLVED);
+  // }, [news]);
+
+  // useEffect(() => {
+  //   if (!searchText) return;
+  //   setStatus(STATUS.PENDING);
+  //   getNews(searchText)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       if (data.status === 'ok') {
+  //         setNews(data.articles);
+  //         setStatus(STATUS.RESOLVED);
+  //       } else {
+  //         return Promise.reject(data.message);
+  //       }
+  //     })
+  //     .catch(error => {
+  //       setError(error);
+  //       setStatus(STATUS.REJECTED);
+  //     });
+  // }, [searchText, setNews]);
 
   if (status === STATUS.PENDING) {
     return (
