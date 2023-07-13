@@ -8,3 +8,13 @@ export const getNews = searchText => {
     },
   });
 };
+
+export const getTopNews = async () => {
+  const data = await fetch(`${BASE_URL}/top-headlines?country=us`, {
+    headers: {
+      'X-Api-Key': API_KEY,
+    },
+  });
+
+  return await data.json();
+};
