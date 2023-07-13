@@ -10,7 +10,7 @@ const STATUS = {
   IDLE: 'idle',
   PENDING: 'pending',
   REJECTED: 'rejected',
-  RESOLVED: 'resolved',
+  FULFILLED: 'fulfilled',
 };
 
 export const ContentInfo = ({ searchText }) => {
@@ -59,7 +59,7 @@ export const ContentInfo = ({ searchText }) => {
         <span className="visually-hidden">Loading...</span>
       </div>
     );
-  } else if (status === STATUS.RESOLVED) {
+  } else if (status === STATUS.FULFILLED) {
     return (
       <ul>
         {news.map(item => (
