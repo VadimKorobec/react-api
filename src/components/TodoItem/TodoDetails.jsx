@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { TodoItem } from './TodoItem';
 import { useSelector } from 'react-redux';
