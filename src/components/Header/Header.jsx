@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 export const Header = ({ showModal }) => {
@@ -6,6 +7,9 @@ export const Header = ({ showModal }) => {
   const handleLogin = () => {
     navigate('/login');
   };
+
+  const dispatch = useDispatch();
+
   return (
     <>
       <nav className="navbar bg-dark mb-3 navbar-expand-lg">
@@ -43,6 +47,16 @@ export const Header = ({ showModal }) => {
             onClick={handleLogin}
           >
             Login
+          </button>
+          <button
+            className="btn btn-outline-seccess"
+            type="button"
+            style={{ backgroundColor: 'pink' }}
+            onClick={() => {
+              dispatch(() => ({ type: 'thunk', payload: 100 }));
+            }}
+          >
+            thunk
           </button>
         </div>
       </nav>
