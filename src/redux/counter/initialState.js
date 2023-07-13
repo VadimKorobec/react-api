@@ -1,1 +1,4 @@
-export const counterInitialState = { total: 0, step: 1 };
+export const counterInitialState = {
+  total: 0,
+  step: 1,
+};
