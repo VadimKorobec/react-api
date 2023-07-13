@@ -4,9 +4,7 @@ import { initialState } from './initialState';
 
 const customArr = [getNewsThunk, getNewsSearchThunk];
 
-const fn = status => {
-  return customArr.map(item => item[status]);
-};
+const fn = status => customArr.map(item => item[status]);
 
 const handlePending = state => {
   state.isLoading = true;
@@ -34,10 +32,7 @@ const newsSlice = createSlice({
       // .addCase(getNewsSearchThunk.pending, handlePending)
       .addCase(getNewsSearchThunk.fulfilled, handleFulfilled)
       .addCase(getNewsSearchThunk.rejected, handleRejected)
-      .addMatcher(
-        isAnyOf([getNewsThunk.pending, getNewsSearchThunk.pending]),
-        handlePending
-      );
+      .addMatcher(isAnyOf(...fn('pending')), handlePending);
   },
 });
 
