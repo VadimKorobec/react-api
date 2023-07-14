@@ -7,11 +7,10 @@ import {
 import { productsSelector } from 'redux/product/selectors';
 
 export const ProductsPage = () => {
-  const { products, error, isLoading } = useSelector(productsSelector);
+  const products = useSelector(productsSelector);
+  const { error, isLoading } = useSelector(state => state.products);
 
   const dispatch = useDispatch();
-
-  const sortedProducts = [...products].sort((a, b) => a.price - b.price);
 
   useEffect(() => {
     dispatch(getProductsThunk());
@@ -24,10 +23,10 @@ export const ProductsPage = () => {
           <span className="visual-hidden">Loading...</span>
         </div>
       )}
-      {sortedProducts && (
+      {products && (
         <div className="container text-center">
           <div className="row">
-            {sortedProducts.map(({ id, title, description, images, price }) => (
+            {products.map(({ id, title, description, images, price }) => (
               <div className="col" key={id}>
                 <div className="card" style={{ width: '18rem' }}>
                   <img src={images[0]} className="card-img-top" alt={title} />
