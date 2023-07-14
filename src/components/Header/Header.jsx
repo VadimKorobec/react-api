@@ -31,6 +31,9 @@ export const Header = ({ showModal }) => {
               <NavLink className="nav-link text-white" to="/todo">
                 Todo
               </NavLink>
+              <NavLink className="nav-link text-white" to="/products">
+                Products
+              </NavLink>
             </div>
           </div>
           <button
