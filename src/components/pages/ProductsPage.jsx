@@ -1,20 +1,25 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  deleteProductsThunk,
-  getProductsThunk,
-} from '../../redux/product/thunk';
-import { productsSelector } from 'redux/product/selectors';
+// import { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import {
+//   deleteProductsThunk,
+//   getProductsThunk,
+// } from '../../redux/product/thunk';
+// import { productsSelector } from 'redux/product/selectors';
+
+import { useGetProductsQuery } from 'redux/product/productsApi';
 
 export const ProductsPage = () => {
-  const products = useSelector(productsSelector);
-  const { error, isLoading } = useSelector(state => state.products);
+  const { isLoading, isError, data: products } = useGetProductsQuery();
+  console.log('data', products);
 
-  const dispatch = useDispatch();
+  // const products = useSelector(productsSelector);
+  // const { error, isLoading } = useSelector(state => state.products);
 
-  useEffect(() => {
-    dispatch(getProductsThunk());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getProductsThunk());
+  // }, [dispatch]);
 
   return (
     <>
@@ -47,7 +52,7 @@ export const ProductsPage = () => {
           </div>
         </div>
       )}
-      {error && <h2>{error}</h2>};
+      {isError && <h2>error</h2>}
     </>
   );
 };
