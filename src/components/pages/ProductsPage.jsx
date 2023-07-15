@@ -6,11 +6,14 @@
 // } from '../../redux/product/thunk';
 // import { productsSelector } from 'redux/product/selectors';
 
-import { useGetProductsQuery } from 'redux/product/productsApi';
+import {
+  useDeleteProductsMutation,
+  useGetProductsQuery,
+} from 'redux/product/productsApi';
 
 export const ProductsPage = () => {
   const { isLoading, isError, data: products } = useGetProductsQuery();
-  console.log('data', products);
+  const [deleteProduct] = useDeleteProductsMutation();
 
   // const products = useSelector(productsSelector);
   // const { error, isLoading } = useSelector(state => state.products);
@@ -41,7 +44,7 @@ export const ProductsPage = () => {
                     <p className="card-text">{description}</p>
                     <button
                       className="btn btn-danger"
-                      onClick={() => dispatch(deleteProductsThunk(id))}
+                      // onClick={() => dispatch(deleteProductsThunk(id))}
                     >
                       Delete
                     </button>
