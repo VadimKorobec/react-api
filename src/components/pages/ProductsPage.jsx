@@ -13,7 +13,7 @@ import {
 
 export const ProductsPage = () => {
   const { isLoading, isError, data: products } = useGetProductsQuery();
-  const [deleteProduct] = useDeleteProductsMutation();
+  const [deleteProduct, delInfo] = useDeleteProductsMutation();
 
   // const products = useSelector(productsSelector);
   // const { error, isLoading } = useSelector(state => state.products);
@@ -26,6 +26,7 @@ export const ProductsPage = () => {
 
   return (
     <>
+      {delInfo.isLoading && <h1>Deleting...</h1>}
       {isLoading && (
         <div className="spinner-border" role="status">
           <span className="visual-hidden">Loading...</span>
@@ -45,6 +46,7 @@ export const ProductsPage = () => {
                     <button
                       className="btn btn-danger"
                       // onClick={() => dispatch(deleteProductsThunk(id))}
+                      onClick={() => deleteProduct(id)}
                     >
                       Delete
                     </button>
