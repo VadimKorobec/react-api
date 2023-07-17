@@ -1,6 +1,11 @@
 import { Suspense } from 'react';
+import { login } from 'services/auth';
 
 const LoginPage = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
+    login({});
+  };
   return (
     <Suspense>
       <div
@@ -8,7 +13,7 @@ const LoginPage = () => {
         style={{ minWidth: '350px' }}
       >
         <h1 className="text-center">Login</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">
               Email address
