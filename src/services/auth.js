@@ -7,3 +7,7 @@ const instance = axios.create({
 export const singUp = async body => {
   return await instance.post('/users', body);
 };
+
+export const login = async body => {
+  return await instance.get('//auth/login', body);
+};
