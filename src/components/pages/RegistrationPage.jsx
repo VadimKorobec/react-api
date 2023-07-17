@@ -11,7 +11,7 @@ export const RegistrationPage = () => {
     };
     singUp(newUser)
       .then(res => toast.success('Created'))
-      .catch(error => toast.error(error.message[0]));
+      .catch(error => toast.error(error.responce.data.message[0]));
   };
   return (
     <>
