@@ -5,7 +5,6 @@ import HomePage from './pages/HomePage';
 import { ProductsPage } from './pages/ProductsPage';
 import LoginPage from './pages/LoginPage';
 import { RegistrationPage } from './pages/RegistrationPage';
-import { Toaster } from 'react-hot-toast';
 
 // import { NewsPage } from './pages/NewsPage';
 // import { TodoPage } from './pages/TodoPage';
@@ -34,7 +33,6 @@ export const App = () => {
           </Suspense>
         }
       />
-      <Toaster position="top-right" reverseOrder={false} />
     </Routes>
   );
 };
