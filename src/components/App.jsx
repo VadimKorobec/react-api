@@ -1,8 +1,10 @@
-import { lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import HomePage from './pages/HomePage';
 import { ProductsPage } from './pages/ProductsPage';
+import LoginPage from './pages/LoginPage';
+import { RegistrationPage } from './pages/RegistrationPage';
 
 // import { NewsPage } from './pages/NewsPage';
 // import { TodoPage } from './pages/TodoPage';
@@ -11,7 +13,6 @@ import { ProductsPage } from './pages/ProductsPage';
 const TodoDetails = lazy(() => import('./TodoItem/TodoDetails'));
 const TodoPage = lazy(() => import('./pages/TodoPage'));
 const NewsPage = lazy(() => import('./pages/NewsPage'));
-const LoginPage = lazy(() => import('./pages/LoginPage'));
 
 export const App = () => {
   return (
@@ -24,6 +25,14 @@ export const App = () => {
         <Route path="todo/:id" element={<TodoDetails />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
+      <Route
+        path="/sighUp"
+        element={
+          <Suspense>
+            <RegistrationPage />
+          </Suspense>
+        }
+      />
     </Routes>
   );
 };
