@@ -1,4 +1,18 @@
+import { toast } from 'react-hot-toast';
+import { singUp } from 'services/auth';
+
 export const RegistrationPage = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
+    const newUser = {
+      name: e.target.elements.name.value,
+      email: e.target.elements.email.value,
+      password: e.target.elements.password.value,
+    };
+    singUp(newUser)
+      .then(res => toast.success('Created'))
+      .catch(error => toast.error(error.message[0]));
+  };
   return (
     <>
       <div
@@ -6,7 +20,7 @@ export const RegistrationPage = () => {
         style={{ minWidth: '350px' }}
       >
         <h1 className="text-center">SignUp</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="exampleInputName1" className="form-label">
               Name
