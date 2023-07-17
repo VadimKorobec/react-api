@@ -26,7 +26,7 @@ export const App = () => {
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route
-        path="/sighUp"
+        path="/signUp"
         element={
           <Suspense>
             <RegistrationPage />
