@@ -1,18 +1,25 @@
-import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { singUp } from 'services/auth';
 
 export const RegistrationPage = () => {
+  const navigate = useNavigate();
+
   const handleSubmit = e => {
     e.preventDefault();
     const newUser = {
       name: e.target.elements.name.value,
       email: e.target.elements.email.value,
       password: e.target.elements.password.value,
+      avatar: 'https://api.lorem.space/image/face?w=640&h=480&r=867',
     };
     singUp(newUser)
-      .then(res => toast.success('Created'))
-      .catch(error => toast.error(error.responce.data.message[0]));
+      .then(() => {
+        console.log('Created');
+        navigate('/login');
+      })
+      .catch(error => console.log(error.message));
   };
+
   return (
     <>
       <div
