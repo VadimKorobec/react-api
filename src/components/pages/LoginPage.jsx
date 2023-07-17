@@ -1,10 +1,30 @@
-import { Suspense } from 'react';
-import { login } from 'services/auth';
+import { Suspense, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { loginThunk } from 'redux/auth/thunk';
+// import { login } from 'services/auth';
 
 const LoginPage = () => {
+  const isAuth = useSelector(state => state.auth.access_token);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    isAuth && navigate('/');
+  }, [isAuth, navigate]);
+
   const handleSubmit = e => {
     e.preventDefault();
-    login({});
+    dispatch(
+      loginThunk({
+        email: e.target.elements.email.value,
+        password: e.target.elements.password.value,
+      })
+    );
+    // login({
+    //   email: e.target.elements.email.value,
+    //   password: e.target.elements.password.value,
+    // }).then(console.log);
   };
   return (
     <Suspense>
