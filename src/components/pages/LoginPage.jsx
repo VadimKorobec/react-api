@@ -3,7 +3,11 @@ import { Suspense } from 'react';
 const LoginPage = () => {
   return (
     <Suspense>
-      <div className="container-fluid">
+      <div
+        className="card position-absolute top-50 start-50 translate-middle p-2  "
+        style={{ minWidth: '350px' }}
+      >
+        <h1 className="text-center">Login</h1>
         <form>
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">
