@@ -33,20 +33,20 @@ const handleRejected = (state, action) => {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
   extraReducers: builder => {
     builder
       // .addCase(loginThunk.pending, handlePanding)
-      .addMatcher(
-        isAnyOf(loginThunk.pending, getProfileThunk.pending),
-        handlePanding
-      )
+
       .addCase(loginThunk.fulfilled, handleFulfilled)
       .addCase(getProfileThunk.fulfilled, handleFulfilledProfile)
       // .addCase(loginThunk.rejected, handleRejected)
       .addMatcher(
         isAnyOf(loginThunk.rejected, getProfileThunk.rejected),
         handleRejected
+      )
+      .addMatcher(
+        isAnyOf(loginThunk.pending, getProfileThunk.pending),
+        handlePanding
       );
   },
 });
