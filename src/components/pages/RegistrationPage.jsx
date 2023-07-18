@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { singUp } from 'services/auth';
 
 export const RegistrationPage = () => {
@@ -64,6 +64,9 @@ export const RegistrationPage = () => {
               className="form-control"
               id="exampleInputPassword1"
             />
+          </div>
+          <div>
+            <Link to="/login">Login</Link>
           </div>
           <button
             //   disabled={!this.state.isChecked}
