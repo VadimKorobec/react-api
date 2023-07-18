@@ -1,12 +1,18 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { logOut } from 'redux/auth/slice';
 import { getNewsThunk } from 'redux/news/thunk';
 
 export const Header = ({ showModal }) => {
+  const { profile } = useSelector(state => state.auth);
   const navigate = useNavigate();
 
   const handleLogin = () => {
     navigate('/login');
+  };
+
+  const handleLogOut = () => {
+    dispatch(logOut());
   };
 
   const dispatch = useDispatch();
@@ -44,13 +50,14 @@ export const Header = ({ showModal }) => {
           >
             Open Modal
           </button>
+          {profile && <div>{profile.name}</div>}
           <button
             className="btn btn-outline-seccess"
             type="button"
             style={{ backgroundColor: 'pink' }}
-            onClick={handleLogin}
+            onClick={profile ? handleLogOut : handleLogin}
           >
-            Login
+            {profile ? 'Log Out' : 'LogIn'}
           </button>
           <button
             className="btn btn-outline-seccess"
