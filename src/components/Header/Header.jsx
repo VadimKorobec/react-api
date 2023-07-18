@@ -1,11 +1,19 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logOut } from 'redux/auth/slice';
 import { getNewsThunk } from 'redux/news/thunk';
+import { getProductsThunk } from 'redux/product/thunk';
+import { dellToken } from 'services/auth';
 
 export const Header = ({ showModal }) => {
-  const { profile } = useSelector(state => state.auth);
+  const { profile, access_token } = useSelector(state => state.auth);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    access_token && dispatch(getProductsThunk());
+  }, [access_token, dispatch]);
 
   const handleLogin = () => {
     navigate('/login');
@@ -13,9 +21,8 @@ export const Header = ({ showModal }) => {
 
   const handleLogOut = () => {
     dispatch(logOut());
+    dellToken();
   };
-
-  const dispatch = useDispatch();
 
   return (
     <>
@@ -50,7 +57,7 @@ export const Header = ({ showModal }) => {
           >
             Open Modal
           </button>
-          {profile && <div>{profile.name}</div>}
+          {profile && <div className="text-white">{profile.name}</div>}
           <button
             className="btn btn-outline-seccess"
             type="button"
