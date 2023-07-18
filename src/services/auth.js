@@ -23,6 +23,6 @@ export const login = async body => {
 };
 
 export const getProfile = async () => {
-  const { data } = instance.get('/auth/profile');
+  const { data } = await instance.get('/auth/profile');
   return data;
 };
