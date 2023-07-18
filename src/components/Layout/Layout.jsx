@@ -3,7 +3,6 @@ import { Header } from 'components/Header/Header';
 import { LoginForm } from 'components/LoginForm/LoginForm';
 import { nanoid } from 'nanoid';
 import { Suspense, useState } from 'react';
-import { Toaster } from 'react-hot-toast';
 import { Outlet } from 'react-router-dom';
 
 const Layout = () => {
@@ -37,7 +36,6 @@ const Layout = () => {
             <LoginForm createUser={createUser} closeModal={closeModal} />
           </Modal>
         )}
-        <Toaster position="top-right" reverseOrder={false} />
       </div>
     </>
   );
