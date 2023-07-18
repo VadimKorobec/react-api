@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logOut } from 'redux/auth/slice';
 import { getNewsThunk } from 'redux/news/thunk';
-import { getProductsThunk } from 'redux/product/thunk';
+// import { getProductsThunk } from 'redux/product/thunk';
 import { dellToken } from 'services/auth';
 
 export const Header = ({ showModal }) => {
@@ -11,9 +11,9 @@ export const Header = ({ showModal }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    access_token && dispatch(getProductsThunk());
-  }, [access_token, dispatch]);
+  // useEffect(() => {
+  //   access_token && dispatch(getProductsThunk());
+  // }, [access_token, dispatch]);
 
   const handleLogin = () => {
     navigate('/login');
@@ -38,15 +38,19 @@ export const Header = ({ showModal }) => {
               >
                 Home
               </NavLink>
-              <NavLink className="nav-link text-white" to="/news">
-                News
-              </NavLink>
-              <NavLink className="nav-link text-white" to="/todo">
-                Todo
-              </NavLink>
-              <NavLink className="nav-link text-white" to="/products">
-                Products
-              </NavLink>
+              {access_token && (
+                <>
+                  <NavLink className="nav-link text-white" to="/news">
+                    News
+                  </NavLink>
+                  <NavLink className="nav-link text-white" to="/todo">
+                    Todo
+                  </NavLink>
+                  <NavLink className="nav-link text-white" to="/products">
+                    Products
+                  </NavLink>
+                </>
+              )}
             </div>
           </div>
           <button
