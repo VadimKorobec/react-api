@@ -33,13 +33,18 @@ const handleRejected = (state, action) => {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    logOut(state) {
+      state.profile = null;
+      state.access_token = '';
+    },
+  },
   extraReducers: builder => {
     builder
       // .addCase(loginThunk.pending, handlePanding)
-
+      // .addCase(loginThunk.rejected, handleRejected)
       .addCase(loginThunk.fulfilled, handleFulfilled)
       .addCase(getProfileThunk.fulfilled, handleFulfilledProfile)
-      // .addCase(loginThunk.rejected, handleRejected)
       .addMatcher(
         isAnyOf(loginThunk.rejected, getProfileThunk.rejected),
         handleRejected
@@ -52,3 +57,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+export const { logOut } = authSlice.actions;
