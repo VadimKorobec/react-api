@@ -1,11 +1,12 @@
-import { loginThunk } from './thunk';
+import { getProfileThunk, loginThunk } from './thunk';
 
-const { createSlice } = require('@reduxjs/toolkit');
+const { createSlice, isAnyOf } = require('@reduxjs/toolkit');
 
 const initialState = {
   access_token: '',
   isloading: false,
   error: '',
+  profile: null,
 };
 
 const handlePanding = state => {
@@ -16,6 +17,12 @@ const handleFulfilled = (state, action) => {
   state.isloading = false;
   state.access_token = action.payload.access_token;
   state.error = '';
+};
+
+const handleFulfilledProfile = (state, action) => {
+  state.isloading = false;
+  state.error = '';
+  state.profile = action.payload;
 };
 
 const handleRejected = (state, action) => {
@@ -29,9 +36,18 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(loginThunk.pending, handlePanding)
+      // .addCase(loginThunk.pending, handlePanding)
+      .addMatcher(
+        isAnyOf(loginThunk.pending, getProfileThunk.pending),
+        handlePanding
+      )
       .addCase(loginThunk.fulfilled, handleFulfilled)
-      .addCase(loginThunk.rejected, handleRejected);
+      .addCase(getProfileThunk.fulfilled, handleFulfilledProfile)
+      // .addCase(loginThunk.rejected, handleRejected)
+      .addMatcher(
+        isAnyOf(loginThunk.rejected, getProfileThunk.rejected),
+        handleRejected
+      );
   },
 });
 
