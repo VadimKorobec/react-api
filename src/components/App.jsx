@@ -8,6 +8,7 @@ import { RegistrationPage } from './pages/RegistrationPage';
 // import { useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute/PublicRoute';
 
 // import { NewsPage } from './pages/NewsPage';
 // import { TodoPage } from './pages/TodoPage';
@@ -39,12 +40,23 @@ export const App = () => {
             <Route path="todo/:id" element={<TodoDetails />} />
           </>
         </Route>
-        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/login"
+          element={
+            <Suspense>
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            </Suspense>
+          }
+        />
         <Route
           path="/signUp"
           element={
             <Suspense>
-              <RegistrationPage />
+              <PublicRoute>
+                <RegistrationPage />
+              </PublicRoute>
             </Suspense>
           }
         />
