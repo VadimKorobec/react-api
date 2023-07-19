@@ -1,14 +1,14 @@
 import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { loginThunk } from '../../redux/auth/thunk';
-import { getProductsThunk } from 'redux/product/thunk';
+// import { getProductsThunk } from 'redux/product/thunk';
 // import { login } from 'services/auth';
 
 const LoginPage = () => {
   // const isAuth = useSelector(state => state.auth.access_token);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // useEffect(() => {
   //   isAuth && navigate('/');
@@ -23,11 +23,12 @@ const LoginPage = () => {
       })
     )
       .unwrap()
-      .then(() => {
-        dispatch(getProductsThunk());
-        navigate('/');
-      })
+      // .then(() => {
+      //   dispatch(getProductsThunk());
+      //   navigate('/');
+      // })
       .catch(() => toast.error('Some error'));
+
     // login({
     //   email: e.target.elements.email.value,
     //   password: e.target.elements.password.value,
