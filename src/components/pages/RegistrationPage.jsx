@@ -1,8 +1,12 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { loginThunk } from 'redux/auth/thunk';
 import { singUp } from 'services/auth';
 
 export const RegistrationPage = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -14,8 +18,13 @@ export const RegistrationPage = () => {
     };
     singUp(newUser)
       .then(() => {
-        console.log('Created');
-        navigate('/login');
+        toast.success('Registration successfully');
+        dispatch(
+          loginThunk({
+            email: e.target.elements.email.value,
+            password: e.target.elements.password.value,
+          })
+        );
       })
       .catch(error => console.log(error.message));
   };
